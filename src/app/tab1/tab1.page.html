@@ -7,46 +7,10 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-card>
-    <ion-img src="https://avatars.githubusercontent.com/u/50827537?s=400&u=2e9e73feeabc076b66a5032340a327974c87de11&v=4"></ion-img>
+  <ion-card button *ngFor="let activity of (activityList | async)">
+    <ion-img [src]="activity.cropped"></ion-img>
     <ion-card-header>
-      <ion-card-title>Matembu Emmanuel Dominic</ion-card-title>
-    </ion-card-header>
-  </ion-card>
-  <ion-card>
-    <ion-img src="https://avatars.githubusercontent.com/u/50827537?s=400&u=2e9e73feeabc076b66a5032340a327974c87de11&v=4"></ion-img>
-    <ion-card-header>
-      <ion-card-title>Matembu Emmanuel Dominic</ion-card-title>
-    </ion-card-header>
-  </ion-card>
-  <ion-card>
-    <ion-img src="https://avatars.githubusercontent.com/u/50827537?s=400&u=2e9e73feeabc076b66a5032340a327974c87de11&v=4"></ion-img>
-    <ion-card-header>
-      <ion-card-title>Matembu Emmanuel Dominic</ion-card-title>
-    </ion-card-header>
-  </ion-card>
-  <ion-card>
-    <ion-img src="https://avatars.githubusercontent.com/u/50827537?s=400&u=2e9e73feeabc076b66a5032340a327974c87de11&v=4"></ion-img>
-    <ion-card-header>
-      <ion-card-title>Matembu Emmanuel Dominic</ion-card-title>
-    </ion-card-header>
-  </ion-card>
-  <ion-card>
-    <ion-img src="https://avatars.githubusercontent.com/u/50827537?s=400&u=2e9e73feeabc076b66a5032340a327974c87de11&v=4"></ion-img>
-    <ion-card-header>
-      <ion-card-title>Matembu Emmanuel Dominic</ion-card-title>
-    </ion-card-header>
-  </ion-card>
-  <ion-card>
-    <ion-img src="https://avatars.githubusercontent.com/u/50827537?s=400&u=2e9e73feeabc076b66a5032340a327974c87de11&v=4"></ion-img>
-    <ion-card-header>
-      <ion-card-title>Matembu Emmanuel Dominic</ion-card-title>
-    </ion-card-header>
-  </ion-card>
-  <ion-card>
-    <ion-img src="https://avatars.githubusercontent.com/u/50827537?s=400&u=2e9e73feeabc076b66a5032340a327974c87de11&v=4"></ion-img>
-    <ion-card-header>
-      <ion-card-title>Matembu Emmanuel Dominic</ion-card-title>
+      <ion-card-title>{{ activity.name }}</ion-card-title>
     </ion-card-header>
   </ion-card>
 </ion-content>
