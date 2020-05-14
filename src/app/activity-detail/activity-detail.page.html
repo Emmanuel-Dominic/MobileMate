@@ -19,4 +19,30 @@
       {{ (activityDetail | async)?.description }}
     </ion-card-content>
   </ion-card>
+  <ion-card class="no-margin">
+    <ion-list lines="none">
+      <ion-item>
+        <ion-label>Duration:</ion-label>
+        <ion-chip color="primary">{{ (activityDetail | async)?.duration }}</ion-chip>
+      </ion-item>
+      <ion-item>
+        <ion-label>Category:</ion-label>
+        <ion-chip color="primary">{{ (activityDetail | async)?.category }}</ion-chip>
+      </ion-item>
+      <ion-item>
+        <ion-label>Popularity:</ion-label>
+        <ion-chip color="primary">{{ (activityDetail | async)?.popularity }}</ion-chip>
+      </ion-item>
+      <ion-item>
+        <ion-label>Visit Video URL:</ion-label>
+        <ion-button fill="clear" [href]="(activityDetail | async)?.video_url" target="_blank">
+          clickMe
+        </ion-button>
+      </ion-item>
+      <ion-item>
+        <ion-label>CreatedBy:</ion-label>
+        <ion-chip *ngIf="activityDetail | async as detail" color="primary">{{ (detail.created_by?.split(',') || [])[0]?.trim() }}</ion-chip>
+      </ion-item>
+    </ion-list>
+  </ion-card>
 </ion-content>
