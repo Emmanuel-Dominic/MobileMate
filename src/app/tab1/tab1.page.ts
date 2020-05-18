@@ -9,11 +9,11 @@ import { ActivityService } from '../activity.service';
   styleUrls: ['tab1.page.scss']
 })
 export class Tab1Page {
-  activityList: Observable<Activity[]>;
+  activityList: Observable<Activity[]> | null = null;
 
-  constructor(activityService: ActivityService) {
-    this.activityList = activityService.getAllActivities()
+  constructor(private activityService: ActivityService) {
+    setTimeout(() => {
+      this.activityList = this.activityService.getAllActivities();
+    }, 2000);
   }
-
-
 }

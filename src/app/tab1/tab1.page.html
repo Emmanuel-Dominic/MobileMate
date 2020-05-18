@@ -7,6 +7,29 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
+  <div *ngIf="!(activityList | async)">
+    <ion-card>
+      <ion-skeleton-text class="skeleteon-image" animated></ion-skeleton-text>
+      <ion-card-header>
+        <ion-skeleton-text animated></ion-skeleton-text>
+        <ion-skeleton-text animated></ion-skeleton-text>
+      </ion-card-header>
+    </ion-card>
+    <ion-card>
+      <ion-skeleton-text class="skeleteon-image" animated></ion-skeleton-text>
+      <ion-card-header>
+        <ion-skeleton-text animated></ion-skeleton-text>
+        <ion-skeleton-text animated></ion-skeleton-text>
+      </ion-card-header>
+    </ion-card>
+    <ion-card>
+      <ion-skeleton-text class="skeleteon-image" animated></ion-skeleton-text>
+      <ion-card-header>
+        <ion-skeleton-text animated></ion-skeleton-text>
+        <ion-skeleton-text animated></ion-skeleton-text>
+      </ion-card-header>
+    </ion-card>
+  </div>
   <ion-card [routerLink]="['activity-detail', activity.id]" button *ngFor="let activity of (activityList | async)">
     <ion-img [src]="activity.cropped"></ion-img>
     <ion-card-header>
