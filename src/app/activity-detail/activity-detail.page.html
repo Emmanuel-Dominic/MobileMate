@@ -41,8 +41,13 @@
       </ion-item>
       <ion-item>
         <ion-label>CreatedBy:</ion-label>
-        <ion-chip *ngIf="activityDetail | async as detail" color="primary">{{ (detail.created_by?.split(',') || [])[0]?.trim() }}</ion-chip>
+        <ion-chip *ngIf="activityDetail | async as detail" color="primary">{{ (detail.created_by.split(',') || [])[0].trim() }}</ion-chip>
       </ion-item>
     </ion-list>
   </ion-card>
+  <ion-fab vertical="top" horizontal="end" slot="fixed">
+    <ion-fab-button (click)="openModal()">
+      <ion-icon name="play"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
 </ion-content>
