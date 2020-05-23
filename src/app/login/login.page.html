@@ -1,0 +1,48 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Login</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-card class="loginCard">
+    <ion-card-content>
+      <form [formGroup]="loginFormGroup">
+        <ion-item [ngClass]="{ 'valid-input': loginFormGroup?.get('email')?.valid && loginFormGroup?.get('email')?.touched, 
+        'invalid-input': loginFormGroup?.get('email')?.invalid && loginFormGroup?.get('email')?.touched }">
+        <ion-label>Email:</ion-label>
+        <ion-input formControlName="email" type="email"></ion-input>
+        </ion-item>
+
+        <div *ngIf="loginFormGroup?.get('email')?.invalid && loginFormGroup?.get('email')?.touched" class="error-messages">
+          <div *ngIf="loginFormGroup?.get('email')?.errors?.['required']">
+            Email is required.
+          </div>
+          <div *ngIf="loginFormGroup?.get('email')?.errors?.['pattern']">
+            Invalid email format.
+          </div>
+        </div>
+
+        <ion-item [ngClass]="{ 'valid-input': loginFormGroup?.get('password')?.valid && loginFormGroup?.get('password')?.touched, 
+                      'invalid-input': loginFormGroup?.get('password')?.invalid && loginFormGroup?.get('password')?.touched }">
+        <ion-label>Password:</ion-label>
+        <ion-input formControlName="password" type="password"></ion-input>
+        </ion-item>
+
+        <div *ngIf="loginFormGroup?.get('password')?.invalid && loginFormGroup?.get('password')?.touched" class="error-messages">
+          <div *ngIf="loginFormGroup?.get('password')?.errors?.['required']">
+            Password is required.
+          </div>
+          <div *ngIf="loginFormGroup?.get('password')?.errors?.['minlength']">
+            Password must be at least 8 characters.
+          </div>
+          <div *ngIf="loginFormGroup?.get('password')?.errors?.['maxlength']">
+            Password cannot exceed 20 characters.
+          </div>
+        </div>
+      
+        <ion-button (click)="login()" [disabled]="loginFormGroup.invalid" class="login-button" expand="full">Login</ion-button>
+      </form>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

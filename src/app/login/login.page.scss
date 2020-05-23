@@ -1,0 +1,26 @@
+.loginCard {
+    margin-top: 25vh;
+}
+
+.login-button {
+    margin-top: 20px;
+}
+
+.valid-input {
+    --ion-item-border-color: #C6F7D0;
+}
+  
+.invalid-input {
+    --ion-item-border-color: #F7C6C6;
+}
+
+ion-label {
+    margin-right: 8px;
+}
+
+.error-messages {
+    font-size: 12px;
+    color: #f44336;
+    margin-top: 4px;
+    margin-left: 15px;
+}
