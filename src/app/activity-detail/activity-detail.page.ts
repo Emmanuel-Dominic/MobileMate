@@ -3,7 +3,7 @@ import { Observable } from 'rxjs';
 import { Activity } from '../types';
 import { ActivityService } from '../activity.service';
 import { ActivatedRoute } from '@angular/router';
-import { ModalController } from '@ionic/angular';
+import { ModalController, ToastController } from '@ionic/angular';
 import { ActivityVideoPage } from '../activity-video/activity-video.page';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
@@ -17,6 +17,7 @@ export class ActivityDetailPage implements OnInit {
   activityDetail: Observable<Activity>;
 
   constructor(
+    private _toastController: ToastController,
     private _angularFireStore: AngularFirestore,
     private _angularFireAuth: AngularFireAuth,
     private _modalController: ModalController,
@@ -47,21 +48,35 @@ export class ActivityDetailPage implements OnInit {
     });
   }
 
-  addToFavorites() {
+  async addToFavorites() {
     this.activityDetail.subscribe((activity: any) => {
-      this._angularFireAuth.authState.subscribe((user: any) => {
-        if(user) {
+      this._angularFireAuth.authState.subscribe(async (user: any) => {
+        if (user) {
           const uid = user.uid;
-          const favoritesRef = this._angularFireStore
-            .collection(`favorites/${uid}/favorites`, ref => ref.where("id", "==", activity.id));
-    
-          favoritesRef.get().subscribe((doc: any) => {
+          const favoritesRef = this._angularFireStore.collection(
+            `favorites/${uid}/favorites`,
+            (ref) => ref.where('id', '==', activity.id)
+          );
+
+          favoritesRef.get().subscribe(async (doc: any) => {
             if (doc.empty) {
-              favoritesRef.add(activity);
+              await favoritesRef.add(activity);
+              this.showToast(`The activity "${activity.name}" is added to your favorites.`);
+            } else {
+              this.showToast(`The activity "${activity.name}" was already in your favorites.`);
             }
           });
         }
       });
     });
+  }
+
+  async showToast(message: string) {
+    const toast = await this._toastController.create({
+      message,
+      duration: 3000,
+      position: 'top',
+    });
+    await toast.present();
   }
 }
