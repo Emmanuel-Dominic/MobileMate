@@ -1,6 +1,8 @@
 {
   "name": "MobileMate",
-  "integrations": {},
+  "integrations": {
+    "capacitor": {}
+  },
   "type": "angular",
   "id": "cc93f4fb"
 }
