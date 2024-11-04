@@ -1,1 +1,3 @@
 # MobileMate
+
+The project is a full-featured Ionic and Capacitor app designed to deliver an engaging and responsive user experience. It incorporates Firebase authentication for secure logins and uses AngularFireAuth to manage user sessions. Users can view and interact with a variety of activities, mark them as favorites, and access detailed information through modals and FAB buttons. Additional features include real-time data retrieval, toast messages, infinite scrolling, and tabs with guards for structured navigation. The UI is enhanced with a skeleton loader for seamless loading states, while Appflow configuration enables easy builds and deployments. The project is ideal for users who want interactive activity tracking and secure, modern app functionality.
